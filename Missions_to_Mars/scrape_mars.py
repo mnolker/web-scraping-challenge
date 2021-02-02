@@ -32,7 +32,7 @@ def scrape():
     # add news title & p to mars_data dictionary
     mars_data["news_title"] = top_news_title
     mars_data["news_paragraph"] = top_news_p
-    print(top_news_title)
+    
 
     #visit url & gather facts on Mars from table
     url_facts = 'https://space-facts.com/mars/'
@@ -55,7 +55,6 @@ def scrape():
     soup = BeautifulSoup(html, 'html.parser')
 
     links = browser.find_by_css("a.itemLink.product-item h3")
-    print(len(links))
 
     hemisphere_image_urls = []
 
@@ -75,5 +74,6 @@ def scrape():
     mars_data["hemisphere_image_urls"] = hemisphere_image_urls
 
     browser.quit()
+    print(mars_data)
     return mars_data
 
