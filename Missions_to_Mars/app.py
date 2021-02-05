@@ -28,15 +28,5 @@ def scrape():
     # Redirect back to home page
     return redirect("/", code=302)
 
-# alternative scrape
-    # marsdata = mongo.db.marsdata
-    # mars_data = scrape_mars.scrape()
-    # marsdata.update(
-    #     {},
-    #     mars_data,
-    #     upsert=True
-    # )
-    # return redirect("/", code=302)
-
 if __name__ == "__main__":
     app.run(debug=True)

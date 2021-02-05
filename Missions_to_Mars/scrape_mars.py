@@ -34,7 +34,7 @@ def scrape():
     mars_data["news_paragraph"] = top_news_p
     
 
-    #visit url & gather facts on Mars from table
+    # visit url & gather facts on Mars from table
     url_facts = 'https://space-facts.com/mars/'
     browser.visit(url_facts)
     soup = BeautifulSoup(html, 'html.parser')
@@ -48,7 +48,7 @@ def scrape():
     # add it to our mars_data dict
     mars_data["facts"] = mars_table_html
 
-    # hemispheres
+    # scrape hemispheres using splinter to navigate to full size image
     url_hemipheres = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(url_hemipheres)
     html = browser.html
@@ -70,10 +70,12 @@ def scrape():
         hemisphere_image_urls.append(hemisphere)
     
         browser.back()
-
+    
+    # add it to our mars_data dict
     mars_data["hemisphere_image_urls"] = hemisphere_image_urls
 
     browser.quit()
+    
     print(mars_data)
     return mars_data
 
